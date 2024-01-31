@@ -1,5 +1,6 @@
-var pg, imgField, imgField6, imgField9, imgFieldKeys, rotateKeys, orOctane, blOctane, orDominus, blDominus, orBatmob,
-    blBatmob, ball, penOn, penOff, reset, title, signature, orange, blue, penColor, penWeight;
+var pg, imgField, imgField6, imgField9, imgFieldKeys, rotateKeys, orOctane, blOctane, grOctane, orDominus, blDominus,
+    grDominus, orBatmob, blBatmob, grBatmob, ball, penOn, penOff, reset, title, signature, orange, blue, penColor,
+    penWeight;
 var drawMode = false;
 var things = []; //array for the objects (cars and ball)
 var field = 1; //variable to define the grid template over the field
@@ -42,6 +43,9 @@ function preload() {
     blOctane = loadImage("assets/blue_octane.png");
     blDominus = loadImage("assets/blue_dominus.png");
     blBatmob = loadImage("assets/blue_batmobile.png");
+    grOctane = loadImage("assets/grey_octane.png");
+    grDominus = loadImage("assets/grey_dominus.png");
+    grBatmob = loadImage("assets/grey_batmobile.png");
     penOn = loadImage("assets/pen_on.png");
     penOff = loadImage("assets/pen_off.png");
     reset = loadImage("assets/reset.png");
@@ -74,37 +78,47 @@ function draw() {
     if (field === 2) image(imgField6, windowWidth / 2, windowHeight / 2);
     else if (field === 3) image(imgField9, windowWidth / 2, windowHeight / 2);
     else image(imgField, windowWidth / 2, windowHeight / 2);
-    if (!drawMode) image(penOff, 50, windowHeight / 2 - 340);
-    else image(penOn, 50, windowHeight / 2 - 340);
+    if (!drawMode) image(penOff, 50, windowHeight / 2 - 360);
+    else image(penOn, 50, windowHeight / 2 - 360);
     push();
     strokeWeight(1);
     stroke(120);
     line(20, windowHeight / 2 - 390, 130, windowHeight / 2 - 390);
-    line(20, windowHeight / 2 - 165, 130, windowHeight / 2 - 165);
+    line(20, windowHeight / 2 - 225, 130, windowHeight / 2 - 225);
     line(20, windowHeight / 2 + 185, 130, windowHeight / 2 + 185);
     fill(0);
-    ellipse(30, windowHeight / 2 - 280, 20, 20);
+    ellipse(30, windowHeight / 2 - 310, 20, 20);
     fill(255, 30, 30);
-    ellipse(57, windowHeight / 2 - 280, 20, 20);
+    ellipse(57, windowHeight / 2 - 310, 20, 20);
     fill(30, 255, 30);
-    ellipse(84, windowHeight / 2 - 280, 20, 20);
+    ellipse(84, windowHeight / 2 - 310, 20, 20);
     fill(255);
-    ellipse(115, windowHeight / 2 - 280, 30, 30);
+    ellipse(115, windowHeight / 2 - 310, 30, 30);
     fill('rgba(255, 30, 30, 0.50)');
-    ellipse(45, windowHeight / 2 - 230, 45, 45);
+    ellipse(45, windowHeight / 2 - 260, 45, 45);
     fill('rgba(30, 255, 30, 0.50)');
-    ellipse(105, windowHeight / 2 - 230, 45, 45);
+    ellipse(105, windowHeight / 2 - 260, 45, 45);
     pop();
-    image(reset, 100, windowHeight / 2 - 340);
-    image(ball, 75, windowHeight / 2 - 120);
+    image(reset, 100, windowHeight / 2 - 360);
+
+    image(ball, 50, windowHeight / 2 - 190);
+    image(grOctane, 100, windowHeight / 2 - 190);
+
+    image(grBatmob, 50, windowHeight / 2 - 125);
+    image(grDominus, 100, windowHeight / 2 - 125);
+    
     image(blOctane, 50, windowHeight / 2 - 60);
     image(orOctane, 100, windowHeight / 2 - 60);
+
     image(blDominus, 50, windowHeight / 2);
     image(orDominus, 100, windowHeight / 2);
+
     image(blBatmob, 50, windowHeight / 2 + 65);
     image(orBatmob, 100, windowHeight / 2 + 65);
+
     image(rotateKeys, 75, windowHeight / 2 + 140);
     image(imgFieldKeys, 75, windowHeight / 2 + 310);
+
     image(title, 75, 60);
     fill(50);
     textSize(10);
@@ -166,11 +180,11 @@ function keyPressed() {
 //function for selecting tools and items on screen
 function mousePressed() {
     help = false;
-    if (mouseX > 50 - 23 && mouseX < 50 + 23 && mouseY > windowHeight / 2 - 340 - 23 && mouseY < windowHeight / 2 - 340 + 23) { //Activates draw mode
+    if (mouseX > 50 - 23 && mouseX < 50 + 23 && mouseY > windowHeight / 2 - 360 - 23 && mouseY < windowHeight / 2 - 360 + 23) { //Activates draw mode
         drawMode = !drawMode;
-    } else if (mouseX > 100 - 23 && mouseX < 100 + 23 && mouseY > windowHeight / 2 - 340 - 23 && mouseY < windowHeight / 2 - 340 + 23) {
+    } else if (mouseX > 100 - 23 && mouseX < 100 + 23 && mouseY > windowHeight / 2 - 360 - 23 && mouseY < windowHeight / 2 - 360 + 23) {
         pg = createGraphics(windowWidth, windowHeight);
-    } else if (mouseY > windowHeight / 2 - 280 - 15 && mouseY < windowHeight / 2 - 280 + 15) {
+    } else if (mouseY > windowHeight / 2 - 310 - 15 && mouseY < windowHeight / 2 - 310 + 15) {
         if (mouseX > 20 && mouseX < 40) {
             penColor = color(0);
             penWeight = 4;
@@ -184,7 +198,7 @@ function mousePressed() {
             penColor = color(255);
             penWeight = 20;
         }
-    } else if (mouseY > windowHeight / 2 - 230 - 22 && mouseY < windowHeight / 2 - 230 + 22) {
+    } else if (mouseY > windowHeight / 2 - 260 - 22 && mouseY < windowHeight / 2 - 260 + 22) {
         if (mouseX > 45 - 22 && mouseX < 45 + 22) {
             penColor = color('rgba(255, 30, 30, 0.10)');
             penWeight = 48;
@@ -192,7 +206,7 @@ function mousePressed() {
             penColor = color('rgba(30, 255, 30, 0.10)');
             penWeight = 48;
         }
-    } else if (mouseX > 75 - 23 && mouseX < 75 + 23 && mouseY > windowHeight / 2 - 120 - 20 && mouseY < windowHeight / 2 - 120 + 20) {
+    } else if (mouseX > 50 - 23 && mouseX < 50 + 23 && mouseY > windowHeight / 2 - 190 - 20 && mouseY < windowHeight / 2 - 190 + 20) {
         var ifBall = false;
         for (var i = 0; i < things.length; i++) {
             if (things[i].img == ball) {
@@ -206,7 +220,12 @@ function mousePressed() {
             things.push(new Thing(windowWidth / 2, windowHeight / 2, z_counter, ball));
             z_counter++;
         }
-    } else if (mouseX > 50 - 20 && mouseX < 50 + 20) { 		// these spawn the blue cars
+    } else if (mouseX > 50 - 20 && mouseX < 50 + 20) {
+        // grey car
+        if (mouseY > windowHeight / 2 - 145 && mouseY < windowHeight / 2 + 105) {
+            things.push(new Thing(mouseX, mouseY, z_counter, grBatmob));
+        }
+        // these spawn the blue cars
         if (mouseY > windowHeight / 2 - 80 && mouseY < windowHeight / 2 - 40) {
             things.push(new Thing(mouseX, mouseY, z_counter, blOctane));
         } else if (mouseY > windowHeight / 2 - 20 && mouseY < windowHeight / 2 + 20) {
@@ -215,8 +234,15 @@ function mousePressed() {
             things.push(new Thing(mouseX, mouseY, z_counter, blBatmob));
         }
         z_counter++;
-    } else if (mouseX > 100 - 20 && mouseX < 100 + 20) {		// these spawn the orange cars
-        if (mouseY > windowHeight / 2 - 80 && mouseY < windowHeight / 2 - 40) {
+    } else if (mouseX > 100 - 20 && mouseX < 100 + 20) {
+        // grey cars
+        if (mouseY > windowHeight / 2 - 210 && mouseY < windowHeight / 2 - 190) {
+            things.push(new Thing(mouseX, mouseY, z_counter, grOctane));
+        } else if (mouseY > windowHeight / 2 - 145 && mouseY < windowHeight / 2 + 105) {
+            things.push(new Thing(mouseX, mouseY, z_counter, grDominus));
+        }
+        // these spawn the orange cars
+        else if (mouseY > windowHeight / 2 - 80 && mouseY < windowHeight / 2 - 40) {
             things.push(new Thing(mouseX, mouseY, z_counter, orOctane));
         } else if (mouseY > windowHeight / 2 - 20 && mouseY < windowHeight / 2 + 20) {
             things.push(new Thing(mouseX, mouseY, z_counter, orDominus));
