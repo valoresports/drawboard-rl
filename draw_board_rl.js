@@ -222,15 +222,15 @@ function mousePressed() {
         }
     } else if (mouseX > 50 - 20 && mouseX < 50 + 20) {
         // grey car
-        if (mouseY > windowHeight / 2 - 145 && mouseY < windowHeight / 2 + 105) {
+        if (mouseY > windowHeight / 2 - 145 && mouseY < windowHeight / 2 - 105) {
             things.push(new Thing(mouseX, mouseY, z_counter, grBatmob));
         }
         // these spawn the blue cars
-        if (mouseY > windowHeight / 2 - 80 && mouseY < windowHeight / 2 - 40) {
+        else if (mouseY > windowHeight / 2 - 70 && mouseY < windowHeight / 2 - 50) {
             things.push(new Thing(mouseX, mouseY, z_counter, blOctane));
-        } else if (mouseY > windowHeight / 2 - 20 && mouseY < windowHeight / 2 + 20) {
+        } else if (mouseY > windowHeight / 2 - 10 && mouseY < windowHeight / 2 + 10) {
             things.push(new Thing(mouseX, mouseY, z_counter, blDominus));
-        } else if (mouseY > windowHeight / 2 + 45 && mouseY < windowHeight / 2 + 85) {
+        } else if (mouseY > windowHeight / 2 + 55 && mouseY < windowHeight / 2 + 75) {
             things.push(new Thing(mouseX, mouseY, z_counter, blBatmob));
         }
         z_counter++;
@@ -238,15 +238,15 @@ function mousePressed() {
         // grey cars
         if (mouseY > windowHeight / 2 - 210 && mouseY < windowHeight / 2 - 190) {
             things.push(new Thing(mouseX, mouseY, z_counter, grOctane));
-        } else if (mouseY > windowHeight / 2 - 145 && mouseY < windowHeight / 2 + 105) {
+        } else if (mouseY > windowHeight / 2 - 145 && mouseY < windowHeight / 2 - 105) {
             things.push(new Thing(mouseX, mouseY, z_counter, grDominus));
         }
         // these spawn the orange cars
-        else if (mouseY > windowHeight / 2 - 80 && mouseY < windowHeight / 2 - 40) {
+        else if (mouseY > windowHeight / 2 - 70 && mouseY < windowHeight / 2 - 50) {
             things.push(new Thing(mouseX, mouseY, z_counter, orOctane));
-        } else if (mouseY > windowHeight / 2 - 20 && mouseY < windowHeight / 2 + 20) {
+        } else if (mouseY > windowHeight / 2 - 10 && mouseY < windowHeight / 2 + 10) {
             things.push(new Thing(mouseX, mouseY, z_counter, orDominus));
-        } else if (mouseY > windowHeight / 2 + 45 && mouseY < windowHeight / 2 + 85) {
+        } else if (mouseY > windowHeight / 2 + 55 && mouseY < windowHeight / 2 + 75) {
             things.push(new Thing(mouseX, mouseY, z_counter, orBatmob));
         }
         z_counter++;
